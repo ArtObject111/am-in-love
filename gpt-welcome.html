@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Артем & Людмила</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Caveat:wght@700&display=swap&quot; rel="
+        stylesheet">
+    <style>
+        :root {
+            --bg: #f4efe8;
+            --paper: #faf7f2;
+            --red: #c91414;
+            --ink: #201c1c;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: Georgia, serif;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 20% 10%, rgba(255, 255, 255, .6), transparent 30%),
+                radial-gradient(circle at 90% 30%, rgba(255, 255, 255, .5), transparent 25%);
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 120px 24px;
+            position: relative
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center
+        }
+
+        .big {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(70px, 13vw, 180px);
+            line-height: .9;
+            font-weight: 400;
+        }
+
+        .script {
+            position: absolute;
+            color: var(--red);
+            font-family: "Caveat", cursive;
+            font-size: clamp(40px, 6vw, 90px);
+            opacity: .95;
+            transform: rotate(-6deg)
+        }
+
+        .polaroid {
+            width: min(360px, 70vw);
+            background: white;
+            padding: 18px 18px 70px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, .18);
+            transform: rotate(-7deg);
+            margin: 40px auto 0
+        }
+
+        .placeholder {
+            height: 420px;
+            background: linear-gradient(135deg, #ddd, #bbb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #666;
+        }
+
+        .card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center
+        }
+
+        .envelope {
+            width: 100%;
+            max-width: 420px;
+            height: 320px;
+            margin: auto;
+            position: relative
+        }
+
+        .envelope:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: #d72626;
+            clip-path: polygon(0 0, 100% 0, 50% 55%);
+        }
+
+        .envelope:after {
+            content: "";
+            position: absolute;
+            left: 30px;
+            right: 30px;
+            top: 50px;
+            bottom: 20px;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+        }
+
+        .photo {
+            position: absolute;
+            width: 240px;
+            height: 280px;
+            background: #f8f8f8;
+            left: 90px;
+            top: 70px;
+            border: 14px solid #fff;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            transform: rotate(-4deg)
+        }
+
+        .title {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 70px;
+            font-weight: 400;
+            margin: 0 0 20px
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 40px;
+            background: var(--red);
+            color: #fff;
+            text-decoration: none
+        }
+
+        .line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 180px;
+            pointer-events: none
+        }
+
+        .line svg {
+            width: 100%;
+            height: 100%
+        }
+
+        .timeline {
+            border-left: 2px solid var(--red);
+            padding-left: 30px
+        }
+
+        .timeline div {
+            margin: 24px 0
+        }
+
+        .note {
+            background: rgba(255, 255, 255, .55);
+            padding: 24px;
+            border-radius: 18px;
+            margin: 14px 0
+        }
+
+        .form {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(255, 255, 255, .55);
+            padding: 40px;
+            border-radius: 30px
+        }
+
+        input {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #ddd;
+            border-radius: 14px;
+            background: white
+        }
+
+        .footer {
+            text-align: center;
+            padding: 120px 20px
+        }
+
+        .swan {
+            position: absolute;
+            opacity: .08;
+            stroke: var(--red);
+            fill: none;
+            stroke-width: 2;
+        }
+
+
+        @media(max-width:900px) {
+            .card {
+                grid-template-columns: 1fr
+            }
+
+            .title {
+                font-size: 48px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero section">
+        <div class="script" style="top:18%;left:8%">С любовью</div>
+        <div class="script" style="bottom:18%;right:8%">Скоро станем семьёй</div>
+
+        <div>
+            <div class="big">Артем
+                & Людмила</div>
+            <p style="font-size:22px;letter-spacing:4px">15 · 07 · 2026</p>
+
+            <div class="polaroid">
+                <div class="placeholder">Ваше фото</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="line">
+        <svg viewBox="0 0 1200 180">
+            <path d="M0 100 C250 180 450 0 700 100 S1000 180 1200 90" stroke="#c91414" fill="none" stroke-width="2" />
+        </svg>
+    </div>
+
+    <section class="section">
+        <h2 class="title">Это приглашение на нашу свадьбу</h2>
+        <p style="font-size:24px;max-width:800px;line-height:1.8">
+            А получили вы его потому, что мы очень хотим видеть вас в этот день рядом с нами.
+        </p>
+    </section>
+
+    <section class="section">
+        <div class="card">
+            <div class="envelope">
+                <div class="photo">Дом семейных
+                    торжеств</div>
+            </div>
+            <div>
+                <h2 class="title">Торжественная регистрация</h2>
+                <p><b>15 июля 2026</b></p>
+                <p>Дом семейных торжеств
+                    Проспект Мира, 24г</p>
+                <a class="btn" target="_blank" href="https://2gis.ru/krasnoyarsk/firm/985691699739212">Открыть карту</a>
+
+                <div class="timeline">
+                    <div><b>14:15</b> — Сбор гостей</div>
+                    <div><b>14:30</b> — Начало регистрации</div>
+                    <div><b>14:50</b> — Завершение регистрации</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="card">
+            <div>
+                <h2 class="title">Праздничный ужин</h2>
+                <p><b>18 июля 2026</b></p>
+                <p>Black Pine
+                    Вторая Лесная улица, 28/1</p>
+                <a class="btn" target="_blank"
+                    href="https://2gis.ru/krasnoyarsk/firm/70000001075773322?m=92.514581%2C55.91683%2F16">Открыть
+                    карту</a>
+
+                <div class="timeline">
+                    <div><b>14:00</b> — Сбор гостей</div>
+                    <div><b>15:00</b> — Банкет</div>
+                    <div><b>19:00</b> — Танцы</div>
+                    <div><b>20:00</b> — Костёр</div>
+                </div>
+            </div>
+            <div class="polaroid" style="transform:rotate(5deg)">
+                <div class="placeholder">BLACK PINE</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="title">Важные моменты</h2>
+        <div class="note">Подготовьте удобную обувь для сменки.</div>
+        <div class="note">Мероприятие будет проходить на открытом воздухе, возьмите тёплую одежду.</div>
+        <div class="note">Для гостей предусмотрены места для хранения вещей и переодевания.</div>
+    </section>
+
+    <section class="section">
+        <h2 class="title">Дресс-код</h2>
+        <p style="max-width:800px;font-size:22px;line-height:1.8">
+            Мы будем рады видеть вас в природных и спокойных оттенках. Просим избегать ярких и кричащих цветов для
+            гармоничных фотографий.
+        </p>
+    </section>
+
+    <section class="section">
+        <div class="form">
+            <h2 class="title" style="font-size:54px">Анкета гостя</h2>
+            <p>Пожалуйста, подтвердите присутствие до 18.06</p>
+            <input placeholder="Ваши имя и фамилия">
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="script" style="position:static;transform:none;font-size:80px">До скорой встречи</div>
+        <p style="font-size:26px">С любовью, Артем и Людмила</p>
+    </footer>
+
+</body>
+
+</html>
