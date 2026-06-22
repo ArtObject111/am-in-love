@@ -217,6 +217,23 @@ body.sm-color1 {
   animation: fadeSlideUp var(--anim-duration) var(--anim-ease) 0.3s forwards;
 }
 
+.sm-love-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(20deg);
+  font-family: var(--alt-font-family);
+  font-size: 0.55em;
+  color: var(--mod-clr);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  animation: fadeSlideUp var(--anim-duration) var(--anim-ease) 0.3s forwards;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  z-index: 2;
+}
+
 .sm-date {
   opacity: 0;
   animation: fadeSlideDown var(--anim-duration) var(--anim-ease) 0.6s forwards;
@@ -572,6 +589,7 @@ body.sm-color1 {
                             <br>
                             <span>&amp;</span>
                             <span>Людмила</span>
+                            <div class="sm-love-label">С любовью</div>
                         </div>
                     </div>
                 </div>
