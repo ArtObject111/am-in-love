@@ -535,6 +535,51 @@ body.sm-color1 {
   animation: fadeSlideUp 0.5s var(--anim-ease);
 }
 
+/* ===== FORM VALIDATION & LOADER ===== */
+.sm-form__block__title--required::after {
+  content: ' *';
+  color: var(--mod-clr);
+}
+
+.sm-form__item--invalid {
+  outline: 2px solid var(--mod-clr);
+  border-radius: 6px;
+  padding: 8px;
+  animation: fadeHighlight 2s ease-out forwards;
+}
+
+@keyframes fadeHighlight {
+  0% { outline-color: var(--mod-clr); }
+  100% { outline-color: transparent; }
+}
+
+.sm-btn--loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.sm-btn--loading .sm-btn__text {
+  visibility: hidden;
+}
+
+.sm-btn--loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border: 2.5px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spikeSpin 0.7s linear infinite;
+}
+
+@keyframes spikeSpin {
+  to { transform: rotate(360deg); }
+}
+
 /* ===== FORM ===== */
 .sm-form__input {
   width: 100%;
@@ -1315,7 +1360,7 @@ body {
                         </div>
 
                         <div class="sm-form__block">
-                            <div class="sm-form__block__title">Сможете ли вы присутствовать на торжественной регистрации 15 июля?</div>
+                            <div class="sm-form__block__title sm-form__block__title--required">Сможете ли вы присутствовать на торжественной регистрации 15 июля?</div>
                             <div class="sm-form__item">
                                 <label class="sm-form_checkbox">
                                     <input class="sm-form_checkbox_input" type="radio" name="registration_attendance" value="yes" required>
@@ -1331,7 +1376,7 @@ body {
                         </div>
 
                         <div class="sm-form__block">
-                            <div class="sm-form__block__title">Сможете ли вы присутствовать на праздничном ужине 18 июля?</div>
+                            <div class="sm-form__block__title sm-form__block__title--required">Сможете ли вы присутствовать на праздничном ужине 18 июля?</div>
                             <div class="sm-form__item">
                                 <label class="sm-form_checkbox">
                                     <input class="sm-form_checkbox_input" type="radio" name="banquet_attendance" value="yes" required>
@@ -1397,7 +1442,7 @@ body {
                             </div>
                         </div>
 
-                        <button class="sm-btn" type="submit">Подтвердить</button>
+                        <button class="sm-btn" type="submit" id="rsvp-submit"><span class="sm-btn__text">Подтвердить</span></button>
                     </form>
                 </div>
             </div>
@@ -1455,7 +1500,7 @@ body {
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     
     <script>!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):(e="undefined"!=typeof globalThis?globalThis:e||self).jsScrollAnimations=t()}(this,function(){"use strict";return function(){let e=!1,t=document.querySelectorAll("[data-jsscroll]");function o(e){let t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1;const o=e.getBoundingClientRect().top,l=window.innerHeight||document.documentElement.clientHeight;return o>=0&&o<=l/t}function l(){!function(t,o){if(e)return;e=!0,setTimeout(()=>{t(),e=!1},o)}(()=>{t.forEach(e=>{const t=e.getAttribute("data-jsscroll-delay")||0,l=e.hasAttribute("data-jsscroll-reset"),s=e.getAttribute("data-jsscroll-threshold")||1.25;o(e,parseFloat(s))?setTimeout(()=>{e.classList.add("jsScroll__scrolled")},t):l&&!o(e,0)&&e.classList.remove("jsScroll__scrolled")})},250)}function s(){t.forEach(e=>{e.classList.remove("jsScroll__scrolled"),e.classList.remove("jsScroll__disabled")})}function n(){window.removeEventListener("scroll",l)}return{init:function(){0!==t.length&&(window.addEventListener("scroll",l),l())},pause:n,reset:s,disable:function(){n(),s(),t.forEach(e=>{e.classList.add("jsScroll__disabled")})}}}});
-var GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwjmZa4qhVGS4XIorvFq7ZTgNG50dZWqsb5G063jRTx6R2S9WWRLQ4HQwyXkrhvyGQG/exec';
+var GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyCqZfpBABdzNlQWwYFEaAmzKAyen1jxpnN5YzdFmdtJoBR6_DSUz5LaRUl_xBwNDSK/exec';
 
 function updateTimer() {
     var target = new Date('2026-07-15T12:00:00+03:00').getTime();
@@ -1557,6 +1602,27 @@ $('#rsvp-form').on('submit', function (e) {
     e.preventDefault();
 
     var form = this;
+    var $btn = $('#rsvp-submit');
+    var $items = $(form).find('.sm-form__item');
+
+    $items.removeClass('sm-form__item--invalid');
+
+    var valid = true;
+    $items.each(function () {
+        var $item = $(this);
+        if ($item.find('input[type="radio"]').length && !$item.find('input[type="radio"]:checked').length) {
+            $item.addClass('sm-form__item--invalid');
+            valid = false;
+        }
+    });
+
+    if (!valid) {
+        setTimeout(function () {
+            $items.removeClass('sm-form__item--invalid');
+        }, 2000);
+        return;
+    }
+
     var data = $(form).serializeArray();
     var payload = {};
     var drinks = [];
@@ -1568,6 +1634,8 @@ $('#rsvp-form').on('submit', function (e) {
         }
     });
     payload.drinks = drinks.join(', ');
+
+    $btn.addClass('sm-btn--loading').prop('disabled', true);
 
     $.ajax({
         url: GOOGLE_APPS_SCRIPT_URL,
@@ -1584,6 +1652,9 @@ $('#rsvp-form').on('submit', function (e) {
     })
     .fail(function () {
         alert('Произошла ошибка при отправке. Пожалуйста, попробуйте ещё раз или свяжитесь с нами.');
+    })
+    .always(function () {
+        $btn.removeClass('sm-btn--loading').prop('disabled', false);
     });
 });
 
