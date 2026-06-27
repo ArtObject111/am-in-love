@@ -462,6 +462,22 @@ body.sm-color1 {
 }
 @media(max-width:500px){ .sm-btn-fulltext{ display:none; } }
 
+/* Скрываем кнопку "Подтвердить присутствие" на десктопе */
+@media (min-width: 501px) {
+  .sm-questionnaire .sm-btn.sm-only-mobile {
+    display: none !important;
+  }
+}
+
+/* Центрируем кнопку "Подтвердить присутствие" на мобилке */
+@media (max-width: 500px) {
+  .sm-questionnaire .sm-btn.sm-only-mobile {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 /* ===== SCROLL TO TOP BUTTON ===== */
 #scrollToTop.sm-scroll-top {
   position: fixed !important;
@@ -1705,6 +1721,7 @@ body{ background-color:var(--cream); }
                     <h2 class="sm-title">Анкета гостя</h2>
                     <div class="sm-text">Пожалуйста, подтвердите своё присутствие.</div>
                 </div>
+                <div class="sm-btn sm-only-mobile open-modal" style="margin:20px auto; width:fit-content;">Подтвердить <span class="sm-btn-fulltext">присутствие</span></div>
                 <div class="sm-questionnaire__form">
                     <form class="sm-form" id="rsvp-form">
                         <div class="sm-form__block">
@@ -1800,7 +1817,6 @@ body{ background-color:var(--cream); }
                 </div>
             </div>
         </section>
-        <div class="sm-btn sm-only-mobile open-modal" style="margin:20px auto; width:fit-content;">Подтвердить <span class="sm-btn-fulltext">присутствие</span></div>
 
         <section class="sm-footer sm-section sm-section-type-1" data-type="10">
             <div class="sm-container">
