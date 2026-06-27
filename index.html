@@ -1168,9 +1168,13 @@ body {
 }
 
 
-/* волнистая красная линия-разделитель */
-.sm-wave{ width:min(440px,76%); height:26px; margin:clamp(30px,5vw,46px) auto clamp(20px,3vw,28px); }
-.sm-wave svg{ display:block; width:100%; height:100%; overflow:visible; }
+/* декоративные волнистые линии-разделители */
+.sm-decor-line{ width:100vw; position:relative; left:50%; margin-inline:-50vw; margin-block:clamp(16px,2vw,30px); overflow:visible; pointer-events:none; user-select:none; line-height:0; }
+.sm-decor-line picture,
+.sm-decor-line img{ display:block; width:100%; height:auto; }
+.sm-decor-line--tilt-l{ transform:rotate(-2.5deg); }
+.sm-decor-line--tilt-r{ transform:rotate(2deg); }
+@media(min-width:501px){ .sm-decor-line--mobile-only{ display:none; } }
 
 /* ===== ТАЙМЛАЙН СОБЫТИЯ — чистый, адаптивный ===== */
 /* сбрасываем наследие шаблона (битый декор/паддинги) */
@@ -1347,7 +1351,7 @@ body{ background-color:var(--cream); }
   .sm-event__timeline{ max-width:100%; }
   .sm-event__eyebrow::before,
   .sm-event__eyebrow::after{ margin:0 7px; }
-  .sm-wave{ width:84%; }
+  .sm-decor-line{ margin-block:10px 8px; }
 }
 @media (prefers-reduced-motion:reduce){
   .sm-cal-heart svg,
@@ -1417,6 +1421,12 @@ body{ background-color:var(--cream); }
                 </div>
             </div>
         </section>
+        <div class="sm-decor-line sm-decor-line--tilt-r" aria-hidden="true">
+            <picture>
+                <source srcset="img/assets/section-decor-type-1.webp" media="(min-width: 501px)">
+                <img src="img/assets/section-decor-type-mobile-1.webp" alt="">
+            </picture>
+        </div>
 
         <section id="section-greeting" class="sm-datetime sm-section sm-section-type-2" data-type="2">
             <div class="sm-container sm-container-flex">
@@ -1489,7 +1499,12 @@ body{ background-color:var(--cream); }
                         <a class="sm-btn" href="https://2gis.ru/krasnoyarsk/firm/985691699739212" target="_blank">Как добраться</a>
                     </div>
                 </div>
-                <div class="sm-wave" aria-hidden="true"><svg viewBox="0 0 400 28" preserveAspectRatio="none"><path d="M2,14 C52,2 96,2 146,14 C196,26 236,26 286,14 C336,2 366,4 398,14" fill="none" stroke="#D50100" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg></div>
+                <div class="sm-decor-line sm-decor-line--tilt-l" aria-hidden="true">
+                    <picture>
+                        <source srcset="img/assets/section-decor-type-2.webp" media="(min-width: 501px)">
+                        <img src="img/assets/section-decor-type-mobile-2.webp" alt="">
+                    </picture>
+                </div>
                 <div class="sm-event__timeline sm-timing">
                     <h3 class="sm-timing__subtitle">Тайминг регистрации</h3>
                     <div class="sm-timing__items">
@@ -1501,6 +1516,12 @@ body{ background-color:var(--cream); }
                 </div>
             </div>
         </section>
+        <div class="sm-decor-line sm-decor-line--tilt-r" aria-hidden="true">
+            <picture>
+                <source srcset="img/assets/section-decor-type-1.webp" media="(min-width: 501px)">
+                <img src="img/assets/section-decor-type-mobile-3.webp" alt="">
+            </picture>
+        </div>
 
         <section id="section-banquet" class="sm-event sm-event--alt sm-section-type-2" data-type="3b">
             <div class="sm-container">
@@ -1524,7 +1545,12 @@ body{ background-color:var(--cream); }
                         <a class="sm-btn" href="https://2gis.ru/krasnoyarsk/firm/70000001075773322?m=92.514581%2C55.91683%2F16" target="_blank">Как добраться</a>
                     </div>
                 </div>
-                <div class="sm-wave" aria-hidden="true"><svg viewBox="0 0 400 28" preserveAspectRatio="none"><path d="M2,14 C52,2 96,2 146,14 C196,26 236,26 286,14 C336,2 366,4 398,14" fill="none" stroke="#D50100" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg></div>
+                <div class="sm-decor-line sm-decor-line--tilt-l" aria-hidden="true">
+                    <picture>
+                        <source srcset="img/assets/section-decor-type-2.webp" media="(min-width: 501px)">
+                        <img src="img/assets/section-decor-type-mobile-5.webp" alt="">
+                    </picture>
+                </div>
                 <div class="sm-event__timeline sm-timing">
                     <h3 class="sm-timing__subtitle">Тайминг ужина</h3>
                     <div class="sm-timing__items">
@@ -1565,6 +1591,12 @@ body{ background-color:var(--cream); }
                 </div>
             </div>
         </section>
+        <div class="sm-decor-line sm-decor-line--mobile-only sm-decor-line--tilt-r" aria-hidden="true">
+            <picture>
+                <img src="img/assets/section-decor-type-mobile-6.webp" alt="">
+            </picture>
+        </div>
+
         <section class="sm-dress-code sm-section-type-1" data-type="5">
             <div class="sm-container">
                 <h2 class="sm-title">Дресс-код</h2>
@@ -1646,6 +1678,11 @@ body{ background-color:var(--cream); }
                 </div>
             </div>
         </section>
+        <div class="sm-decor-line sm-decor-line--mobile-only sm-decor-line--tilt-l" aria-hidden="true">
+            <picture>
+                <img src="img/assets/section-decor-type-mobile-3.webp" alt="">
+            </picture>
+        </div>
 
         <section id="section-wishes" class="sm-wishes sm-section-type-1" data-type="7">
             <div class="sm-container">
