@@ -1587,8 +1587,8 @@ body{ background-color:var(--cream); }
                     <div class="sm-banquet-gallery">
                         <p class="sm-text">Вот фотки красивого места, где состоится праздничный ужин:</p>
                         <div class="sm-mt-20 sm-banquet-gallery__slider" data-slick='{"slidesToShow":1,"infinite":true}'>
-                            <a data-fancybox="banquet" href="img/blackPine/photo1.jpg">
-                                <img src="img/blackPine/photo1.jpg" alt="Black Pine 1">
+                            <a data-fancybox="banquet" href="img/blackPine/photo_2023-08-18_15-.jpg.webp">
+                                <img src="img/blackPine/photo_2023-08-18_15-.jpg.webp" alt="Black Pine 1">
                             </a>
                             <a data-fancybox="banquet" href="img/blackPine/photo_2023-08-.jpg">
                                 <img src="img/blackPine/photo_2023-08-.jpg" alt="Black Pine 2">
@@ -1608,8 +1608,8 @@ body{ background-color:var(--cream); }
                             <a data-fancybox="banquet" href="img/blackPine/EB8yL1OF15iwdZuul0Oc.jpg.webp">
                                 <img src="img/blackPine/EB8yL1OF15iwdZuul0Oc.jpg.webp" alt="Black Pine 7">
                             </a>
-                            <a data-fancybox="banquet" href="img/blackPine/photo_2023-08-18_15-.jpg.webp">
-                                <img src="img/blackPine/photo_2023-08-18_15-.jpg.webp" alt="Black Pine 8">
+                            <a data-fancybox="banquet" href="img/blackPine/photo1.jpg">
+                                <img src="img/blackPine/photo1.jpg" alt="Black Pine 8">
                             </a>
                         </div>
                         <div class="sm-banquet-gallery__arrows">
@@ -1965,6 +1965,7 @@ $(function () {
     updateTimer();
     setInterval(updateTimer, 1000);
 
+    $('.slick-cloned [data-fancybox]').removeAttr('data-fancybox');
     Fancybox.bind('[data-fancybox]');
 
     if (typeof jsScrollAnimations === 'function') {
